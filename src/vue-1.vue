@@ -1,4 +1,3 @@
-
 <template>
   <div id="app">
     <h1>Compteur</h1>
@@ -9,21 +8,27 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
-    return {
-      count: 0, // Valeur initiale du compteur
+  setup() {
+    const count = ref(0); // Valeur initiale du compteur
+
+    const increment = () => {
+      count.value++; // Incrémente la valeur
     };
-  },
-  methods: {
-    increment() {
-      this.count++; // Incrémente la valeur
-    },
-    decrement() {
-      if (this.count > 0) {
-        this.count--; // Décrémente la valeur si elle est supérieure à 0
+
+    const decrement = () => {
+      if (count.value > 0) {
+        count.value--; // Décrémente la valeur si elle est supérieure à 0
       }
-    },
+    };
+
+    return {
+      count,
+      increment,
+      decrement,
+    };
   },
 };
 </script>
